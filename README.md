@@ -19,9 +19,3 @@ Xây dựng hệ thống đặt tour hoàn chỉnh: **tìm kiếm, đặt tour, 
 ## Link 
 - GitHub:
 - Demo: 
-
-##
-Câu hỏi,Trả lời (bạn nói)
-"""Bạn làm gì trong dự án?""","""Em xây toàn bộ từ A-Z: CPT, REST API, form xử lý, Telegram bot, custom table, test..."""
-"""Kiến trúc thế nào?""","""Em dùng Clean Architecture: Presentation → Application → Domain → Infrastructure. Dễ test, dễ mở rộng."""
-"""Khó nhất là gì?""","""Tách Notification ra khỏi Infrastructure, dùng Event để gửi Telegram + log – tránh tight coupling."""# wordpress-travel-booking
