@@ -33,9 +33,10 @@ final class Tour
     public function name(): string              { return $this->name; }
     public function tourCode(): string          { return $this->tourCode; }
     public function isFeatured(): bool          { return $this->isFeatured; }
-    public function featuredImage(): string    { return $this->featuredImage; }
-    public function createdAt(): DateTimeImmutable { return $this->createdAt; }
-    public function updatedAt(): ?DateTimeImmutable { return $this->updatedAt; }
+    public function gallery(): array                { return $this->gallery; }
+    public function featuredImage(): string         { return $this->featuredImage; }
+    public function createdAt(): DateTimeImmutable  { return $this->createdAt; }
+    public function updatedAt(): ?DateTimeImmutable     { return $this->updatedAt; }
     public function status(): TourStatus        { return $this->status; }
 
     // Slug thô
