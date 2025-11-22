@@ -1,4 +1,15 @@
 <?php
+/**
+ * Notification <-> Database mapper
+ *
+ * @package   TravelBooking\Domain\Mapper
+ * @author    KhanhECB
+ * @since     1.0.0
+ * @version   1.0.0
+ *
+ * @internal  Only Repository should use this class
+ *             Part of Clean Architecture / DDD implementation
+ */
 
 namespace TravelBooking\Domain\Mapper;
 
@@ -32,9 +43,9 @@ final class NotificationMapper
             'id' => $notification->id,
             'kind' => $notification->kind,
             'message' => $notification->message,
-            'status' => $notification->status,
+            'status' => $notification->status->value,
             'error' => $notification->error,
-            'sent_date' => $notification->sentDate,
+            'sent_date' => $notification->sentDate?->format('Y-m-d H:i:s'),
             'created_date' => $notification->createdDate ?? (new DateTimeImmutable())->format('Y-m-d H:i:s')
         ];
     }
