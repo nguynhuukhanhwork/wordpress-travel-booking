@@ -2,8 +2,7 @@
 
 namespace TravelBooking\Application\DTO;
 
-use TravelBooking\Domain\Entity\Tour;
-use TravelBooking\Domain\Service\TourTaxonomyReader;
+use TravelBooking\Domain\Model\Tour\Tour;
 use TravelBooking\Infrastructure\WordPress\Taxonomy\TermReader;
 
 final class TourDetailResponse

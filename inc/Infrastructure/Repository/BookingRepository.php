@@ -4,8 +4,8 @@ namespace TravelBooking\Infrastructure\Repository;
 
 use DateTimeImmutable;
 use RuntimeException;
-use TravelBooking\Config\Enum\BookingStatus;
-use TravelBooking\Domain\Entity\Booking;
+use TravelBooking\Domain\Enum\BookingStatus;
+use TravelBooking\Domain\Model\Booking\Booking;
 use TravelBooking\Infrastructure\Database\BookingTable;
 
 // class thực sự biết insert/update

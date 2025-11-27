@@ -11,11 +11,10 @@
  *             Part of Clean Architecture / DDD implementation
  */
 
-namespace TravelBooking\Domain\Mapper;
+namespace TravelBooking\Domain\Model\Notification;
 
 use DateTimeImmutable;
-use TravelBooking\Config\Enum\NotificationStatus;
-use TravelBooking\Domain\Entity\Notification;
+use TravelBooking\Domain\Enum\NotificationStatus;
 
 final class NotificationMapper
 {

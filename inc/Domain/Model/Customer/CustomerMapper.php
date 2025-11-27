@@ -1,11 +1,10 @@
 <?php
 
-namespace TravelBooking\Domain\Mapper;
+namespace TravelBooking\Domain\Model\Customer;
 
-use TravelBooking\Config\Enum\CustomerSource;
-use TravelBooking\Config\Enum\CustomerType;
-use TravelBooking\Domain\Entity\Customer;
 use DateTimeImmutable;
+use TravelBooking\Domain\Enum\CustomerSource;
+use TravelBooking\Domain\Enum\CustomerType;
 
 final class CustomerMapper
 {

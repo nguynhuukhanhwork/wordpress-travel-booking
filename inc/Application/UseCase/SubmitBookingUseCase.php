@@ -2,18 +2,15 @@
 
 namespace TravelBooking\Application\UseCase;
 
-use SimplePie\Exception;
 use TravelBooking\Application\DTO\BookingFormDTO;
-use TravelBooking\Application\Service\BookingService;
-use TravelBooking\Domain\Entity\Booking;
-use TravelBooking\Domain\Entity\Customer;
+use TravelBooking\Domain\Model\Booking\Booking;
+use TravelBooking\Domain\Model\Customer\Customer;
 use TravelBooking\Infrastructure\Logger\Logger;
 use TravelBooking\Infrastructure\Notification\TelegramNotification;
 use TravelBooking\Infrastructure\Repository\BookingDataRepository;
 use TravelBooking\Infrastructure\Repository\CustomerRepository;
 use TravelBooking\Infrastructure\Repository\NotificationRepository;
 use WP_Error;
-use WPCF7_Submission;
 use function PHPUnit\Framework\throwException;
 
 class SubmitBookingUseCase

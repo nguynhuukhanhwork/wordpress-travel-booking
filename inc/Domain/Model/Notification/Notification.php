@@ -14,8 +14,8 @@
  * @internal  Use Notification::create() or Notification::reconstitute() only
  */
 
-namespace TravelBooking\Domain\Entity;
-use TravelBooking\Config\Enum\NotificationStatus;
+namespace TravelBooking\Domain\Model\Notification;
+use TravelBooking\Domain\Enum\NotificationStatus;
 use TravelBooking\Domain\ValueObject\DateTimeVO;
 
 final readonly class Notification

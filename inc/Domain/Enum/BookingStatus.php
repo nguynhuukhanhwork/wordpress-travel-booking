@@ -1,6 +1,6 @@
 <?php
 
-namespace TravelBooking\Config\Enum;
+namespace TravelBooking\Domain\Enum;
 
 enum BookingStatus : string
 {

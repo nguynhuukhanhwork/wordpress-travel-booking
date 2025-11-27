@@ -3,10 +3,10 @@
  * Date: 27-11-2025
  */
 
-namespace TravelBooking\Domain\Entity;
+namespace TravelBooking\Domain\Model\Tour;
 
 use TravelBooking\Config\Enum\TaxonomyName;
-use TravelBooking\Config\Enum\TourStatus;
+use TravelBooking\Domain\Enum\TourStatus;
 use TravelBooking\Domain\Service\TourTaxonomyReader;
 use TravelBooking\Domain\ValueObject\DateTimeVO;
 

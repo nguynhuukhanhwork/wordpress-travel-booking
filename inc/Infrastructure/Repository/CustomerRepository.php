@@ -2,7 +2,7 @@
 
 namespace TravelBooking\Infrastructure\Repository;
 
-use TravelBooking\Domain\Entity\Customer;
+use TravelBooking\Domain\Model\Customer\Customer;
 use TravelBooking\Infrastructure\Database\CustomerTable;
 
 class CustomerRepository extends BaseCustomTable

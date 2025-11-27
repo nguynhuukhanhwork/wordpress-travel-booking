@@ -1,9 +1,10 @@
 <?php
 
-namespace TravelBooking\Domain\Entity;
+namespace TravelBooking\Domain\Model\Booking;
 
 use DateTimeImmutable;
-use TravelBooking\Config\Enum\BookingStatus;
+use TravelBooking\Domain\Entity\Entity;
+use TravelBooking\Domain\Enum\BookingStatus;
 use TravelBooking\Domain\ValueObject\DateTimeVO;
 
 #[Entity]

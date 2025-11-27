@@ -1,8 +1,6 @@
 <?php
 
-namespace TravelBooking\Config\Enum;
-
-use MyCLabs\Enum\Enum;
+namespace TravelBooking\Domain\Enum;
 
 ENUM CustomerSource: string
 {

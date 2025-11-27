@@ -5,11 +5,10 @@
  * - Reconstruct entity from Database
  * Date: 27-11-2025
  */
-namespace TravelBooking\Domain\Mapper;
+namespace TravelBooking\Domain\Model\Booking;
 
-use TravelBooking\Domain\Entity\Booking;
 use DateTimeImmutable;
-use TravelBooking\Config\Enum\BookingStatus;
+use TravelBooking\Domain\Enum\BookingStatus;
 
 class BookingMapper
 {

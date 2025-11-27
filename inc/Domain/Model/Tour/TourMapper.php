@@ -3,10 +3,9 @@
  * Date: 27-11-2025
  */
 
-namespace TravelBooking\Domain\Mapper;
+namespace TravelBooking\Domain\Model\Tour;
 
-use TravelBooking\Domain\Entity\Tour;
-use TravelBooking\Config\Enum\TourStatus;
+use TravelBooking\Domain\Enum\TourStatus;
 use TravelBooking\Domain\ValueObject\DateTimeVO;
 
 final class TourMapper

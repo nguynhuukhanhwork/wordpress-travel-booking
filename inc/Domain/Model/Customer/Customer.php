@@ -1,9 +1,9 @@
 <?php
 
-namespace TravelBooking\Domain\Entity;
+namespace TravelBooking\Domain\Model\Customer;
 
-use TravelBooking\Config\Enum\CustomerSource;
-use TravelBooking\Config\Enum\CustomerType;
+use TravelBooking\Domain\Enum\CustomerSource;
+use TravelBooking\Domain\Enum\CustomerType;
 use TravelBooking\Domain\ValueObject\DateTimeVO;
 
 final readonly class Customer
