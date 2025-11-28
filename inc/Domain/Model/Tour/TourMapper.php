@@ -5,12 +5,16 @@
 
 namespace TravelBooking\Domain\Model\Tour;
 
-use TravelBooking\Domain\Enum\BookingStatus;
 use TravelBooking\Domain\Enum\TourStatus;
 use TravelBooking\Domain\ValueObject\DateTimeVO;
 
 final class TourMapper
 {
+    /**
+     * Map Entity -> array data to import Database
+     * @param Tour $tour
+     * @return array
+     */
     public static function toRow(Tour $tour): array
     {
         return [
@@ -26,9 +30,9 @@ final class TourMapper
             'locations' => $tour->locationSlugs,
             'rating' => $tour->ratingSlug,
             'featured_image' => $tour->featuredImage,
-            'created_at' => $tour->createdAt ?? DateTimeVO::null()->format('Y-m-d H:i:s'),
-            'updated_at' => $tour->updatedAt ?? DateTimeVO::null()->format('Y-m-d H:i:s'),
-            'status' => $tour->status ?? BookingStatus::UNKNOWN->value,
+            'created_at' => $tour->createdAt ?? DateTimeVO::null()->format(),
+            'updated_at' => $tour->updatedAt ?? DateTimeVO::null()->format(),
+            'status' => $tour->status ?? TourStatus::UNKNOWN->value,
         ];
-    }
+    }   
 }

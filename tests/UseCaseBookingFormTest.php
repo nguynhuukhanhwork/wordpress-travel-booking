@@ -25,7 +25,7 @@ add_action('init', function () {
         return;
     }
 
-    test_use_case_booking_form_cf7();
+    // test_use_case_booking_form_cf7();
 
     dd('DONE TESTING');
 });

@@ -5,10 +5,10 @@
  * Represents a notification (Telegram, Email, SMS, etc.)
  * This entity is 100% immutable and persistence-ignorant.
  *
- * @package   TravelBooking\Domain\Entity
- * @author    Nguyễn Văn A <you@example.com>
+ * @package   TravelBooking\Domain\Model\Notification
+ * @author    KhanhECB
  * @since     1.0.0 Introduced
- * @version   1.1.0 Added readonly class + factory methods
+ * @version   1.0.0 Added readonly class + factory methods
  *
  * @immutable This entity cannot be modified – only replaced with new instance
  * @internal  Use Notification::create() or Notification::reconstitute() only
