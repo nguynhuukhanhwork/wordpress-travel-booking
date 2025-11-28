@@ -16,13 +16,14 @@
 
 namespace TravelBooking\Domain\Model\Notification;
 use TravelBooking\Domain\Enum\NotificationStatus;
+use TravelBooking\Domain\Enum\NotificationType;
 use TravelBooking\Domain\ValueObject\DateTimeVO;
 
 final readonly class Notification
 {
     private function __construct(
         public ?int               $id,
-        public string             $kind,
+        public NotificationType   $kind,
         public string             $message,
         public NotificationStatus $status,
         public ?string            $error,
@@ -32,37 +33,10 @@ final readonly class Notification
     {
     }
 
-    // --- Factory
-
-    /**
-     * Create new Notification
-     * @param string $kind
-     * @param string $message
-     * @param string|null $sendDate
-     * @param NotificationStatus $status
-     * @return self
-     */
-    public static function create(
-        string $kind,
-        string $message,
-        NotificationStatus $status,
-        ?string $sendDate = null,
-    ): self {
-        return new self(
-            id: null,
-            kind: $kind,
-            message: $message,
-            status: $status,
-            error: null,
-            sentDate: $sendDate ? DateTimeVO::fromString($sendDate) : DateTimeVO::now(),
-            createdDate: DateTimeVO::now(),
-        );
-    }
-
     /**
      * Factory method for Mapper database -> Entity
      * @param int|null $id
-     * @param string $kind
+     * @param NotificationType $kind
      * @param string $message
      * @param NotificationStatus $status
      * @param string|null $error
@@ -72,7 +46,7 @@ final readonly class Notification
      */
     public static function reconstitute(
         ?int               $id,
-        string             $kind,
+        NotificationType   $kind,
         string             $message,
         NotificationStatus $status,
         ?string            $error,

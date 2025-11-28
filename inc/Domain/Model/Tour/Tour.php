@@ -13,8 +13,8 @@ use TravelBooking\Domain\ValueObject\DateTimeVO;
 final readonly class  Tour
 {
     private function __construct(
-        public ?int           $id = null,
-        public string         $name,
+        public ?int        $id = null,
+        public string      $name,
         public string      $tourCode,
         public bool        $isFeatured,
         public string      $durationSlug,        // 3n2d, 5n4d, 7n6d...

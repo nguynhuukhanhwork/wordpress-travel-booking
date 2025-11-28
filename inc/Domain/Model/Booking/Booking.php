@@ -2,12 +2,9 @@
 
 namespace TravelBooking\Domain\Model\Booking;
 
-use DateTimeImmutable;
-use TravelBooking\Domain\Entity\Entity;
 use TravelBooking\Domain\Enum\BookingStatus;
 use TravelBooking\Domain\ValueObject\DateTimeVO;
 
-#[Entity]
 final readonly class Booking
 {
     private function __construct(
@@ -30,7 +27,7 @@ final readonly class Booking
         string     $tourName,
         DateTimeVO $startDate,
         int        $adults,
-        int        $children,
+        int        $children = 0,
         ?string    $note = null,
     ): self
     {
@@ -43,25 +40,23 @@ final readonly class Booking
             totalPersons: $adults + $children,
             note: $note,
             createdAt: DateTimeVO::now(),
-            updatedAt: DateTimeVO::now(),
+            updatedAt: null,
             status: BookingStatus::PENDING
         );
     }
 
-
-
-    // Factory ĐẶC BIỆT để reconstruct từ DB (bỏ qua validation)
+    // Factory reconstruct từ DB (bỏ qua validation)
     public static function reconstruct(
-        ?int                $id,
-        ?string             $code,
-        int                 $customerId,
-        string              $tourName,
-        DateTimeImmutable   $startDate,
-        int                 $totalPersons,
-        ?string             $note,
-        DateTimeImmutable   $createdAt,
-        ?DateTimeImmutable  $updatedAt,
-        BookingStatus       $status,
+        ?int          $id,
+        ?string       $code,
+        int           $customerId,
+        string        $tourName,
+        DateTimeVO    $startDate,
+        int           $totalPersons,
+        ?string       $note,
+        DateTimeVO    $createdAt,
+        ?DateTimeVO   $updatedAt,
+        BookingStatus $status,
     ): self {
         return new self(
             id:           $id,
@@ -97,7 +92,7 @@ final readonly class Booking
             totalPersons: $this->totalPersons,
             note: $this->note,
             createdAt: $this->createdAt,
-            updatedAt: $this->updatedAt,
+            updatedAt: DateTimeVO::now(),
             status: $status
         );
     }

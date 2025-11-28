@@ -24,40 +24,6 @@ final readonly class Customer
     {
     }
 
-    // --- Factory
-
-    /**
-     * Create new Customer
-     * @param string $name
-     * @param string $phone
-     * @param string|null $email
-     * @param string|null $address
-     * @param CustomerSource $customerSource
-     * @param CustomerType $customerType
-     * @return self
-     */
-    public static function create(
-        string         $name,
-        string         $phone,
-        ?string        $email = null,
-        ?string        $address = null,
-        CustomerSource $customerSource = CustomerSource::WALK_IN,
-        CustomerType   $customerType = CustomerType::INDIVIDUAL,
-    ): self
-    {
-        return new self(
-            id: null,
-            name: $name,
-            email: $email,
-            phone: $phone,
-            address: $address,
-            customerSource: $customerSource,
-            customerType: $customerType,
-            createdAt: DateTimeVO::now(),
-            updatedAt: null
-        );
-    }
-
     // Load từ DB – chỉ Mapper dùng
     public static function reconstitute(
         ?int           $id,

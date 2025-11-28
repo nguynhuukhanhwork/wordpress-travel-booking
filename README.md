@@ -17,5 +17,6 @@ Xây dựng hệ thống đặt tour hoàn chỉnh: **tìm kiếm, đặt tour, 
 - Admin: Quản lý tour, booking, khách hàng
 
 ## Link 
-- GitHub:
-- Demo: 
+- [Trello URL](https://trello.com/b/mJXDtZic)
+- [My Trello URL](https://trello.com/b/mJXDtZic/wordpress-plugin-travel-booking)
+- [Github Repository](https://github.com/nguyenhuukhanhwork/wordpress-travel-booking)

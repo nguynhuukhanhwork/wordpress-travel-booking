@@ -12,9 +12,10 @@ final readonly class DateTimeVO
     private function __construct(private DateTimeImmutable $value) {}
 
     /**
+     *
      * @param string $dateTime
      * @return self
-     * @throws
+     * @thrown
      */
     public static function fromString(string $dateTime): self
     {
@@ -50,6 +51,11 @@ final readonly class DateTimeVO
     public function toDateTimeImmutable(): DateTimeImmutable {
         return $this->value;
     }
+
+    /**
+     * Return Null date 1970-01-01 00:00:00
+     * @return self
+     */
     public static function null(): self
     {
         static $nullInstance = null;

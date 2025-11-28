@@ -1,6 +1,9 @@
 <?php
 namespace TravelBooking\Infrastructure\WordPress\Registry;
 
+use Dotenv\Exception\ValidationException;
+use TravelBooking\Infrastructure\Logger\Logger;
+
 final class TaxonomyRegistry extends RegistryBase
 {
 
@@ -39,8 +42,8 @@ final class TaxonomyRegistry extends RegistryBase
       $configs = $this->getConfigs();
 
       if (empty($configs)) {
-        kecb_error_log("[TaxonomyRegistry] Empty configs");
-        return false;
+          Logger::log("[Taxonomy Registry] Configuration is empty");
+          throw new ValidationException('Config files not found');
       }
 
       foreach ($configs as $config) {

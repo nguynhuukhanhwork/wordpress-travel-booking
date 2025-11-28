@@ -12,22 +12,6 @@ use TravelBooking\Domain\Enum\BookingStatus;
 
 class BookingMapper
 {
-    public static function fromRow(array $row): Booking
-    {
-        return Booking::reconstruct(
-            id: !empty($row['id']) ? (int) $row['id'] : null,
-            code: $row['code'],
-            customerId: (int) $row['customer_id'],
-            tourName: $row['tour_name'],
-            startDate: new DateTimeImmutable($row['start_date']) ?? new DateTimeImmutable(),
-            totalPersons: (int) $row['total_persons'],
-            note: $row['note'],
-            createdAt: new DateTimeImmutable($row['created_at']) ?? new DateTimeImmutable(),
-            updatedAt: new DateTimeImmutable($row['updated_at']) ?? new DateTimeImmutable(),
-            status: BookingStatus::tryFrom($row['status']) ?? BookingStatus::CONFIRMED,
-        );
-    }
-
     public static function toRow(Booking $booking): array
     {
         return [
@@ -43,5 +27,4 @@ class BookingMapper
             'status' => $booking->status
         ];
     }
-
 }

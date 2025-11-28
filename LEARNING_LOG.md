@@ -32,80 +32,6 @@ Design Parrtern
 - Nếu Entity là private thì làm sao để Factory khởi tạo được ? => Chỉ dùng cho project cực lớn chuẩn theo lý thuyết DDD
 - Nếu là dự án vừa vừa dưới 50 entity thì chơi theo Factory nằm trong Entity luôn
 
-## Problems
-Format:  Problem → Difficulty → Solution → Learned
-
-### Import Post Type bằng CSV
-
-**Problem:** 
-
-Trong lúc phát triển Plugin này, tôi suy nghĩ đến vấn đề làm sao để Import dữ liệu nhanh vào hệ thống để dễ dàng Testing, Migrate sang hệ thống khác nhanh chóng.
-
-Cách xử lý ban đầu:
-- Sử dụng WP CLI Script để tạo dữ liệu
-- Dùng PHP để viết thẳng Import
-- Sử dụng Import CSV
-- 
-
-**Difficulty**
-
-- Nếu dùng WP-CLI thì có vẻ không tiện nếu đưa qua nhiều site và nó Portable
-- Dùng PHP thì hơi khó, viết ra thì phải thiết kế trong kiến trúc => mất thời gian
-- Dùng Import để xử lý là giải pháp tôi thử đầu tiên, sau khi test thử một vài công cụ không thành công như WP All Import,... thì cuối cùng sử dụng `wp-ultimate-csv-importer` thì import ok
-
-Vấn đề tôi gặp phải: Import dữ liệu xong nhưng hàm `get_fields` của Plugin Advanced Custom Field không lấy được dữ liệu của Post `tour`, nên tôi Test thử bằng các công cụ khác:
-- WP CLI thì kiểm tra `meta data` thì có dữ liệu
-- Hàm `get_field` lấy field lẽ thì có dữ liệu
-- Hàm `get_post_meta` của Wordpress thì có thể lấy dữ liệu được
-- Nếu dùng `update_field` truyền dữ liệu vào thì hàm `get_fields` nhận dữ liệu
-- Admin của Advanced Custom Field vẫn đọc được dữ liệu Field và hiển thị lên Admin
-
-**Solution**
-
-Sử dụng hàm `get_post_meta`,  để đọc Field để tăng tốc độ xử lý
-
-**Learned**
-
-- Phát hiện ra lỗi không đọc database của hàm `get_fields` của Plugin Advanced Custom Field
-- Sử dụng `get_post_meta` của Wordpress cải thiện hiệu năng tốt hơn
-
----
-
-### Chưa hiểu rõ cách Testing sao cho nhanh
-
-Ở trong môi trường Local để Test đọc dữ liệu hiển thị của các API ví dụ như `TourRepository::getInstance()->getAll()`
-
-Tìm hiểu Grok/Chat GPT thì nó đề xuất giải pháp load luôn:
-
-```php
-add_action('init', function () {
-    if (!isset($_GET['test_booking_use_case'])) {
-        return;
-    }
-    
-    test_use_case_booking_form_cf7();
-
-    dd('DONE TESTING');
-});
-```
-
-Sử dụng cách này hay ở chỗ là phải kích hoạt nó mới chạy, kiểm soát được, kích hoạt đơn giản thông qua `query string` `/?test_booking_use_case=1`
-
-
-### Phân vân giữa sử dụng dùng JSON Config hay Code PHP thì cấu hình Post Type, ACF và Taxonomy sẽ ok hơn
-
-**Problem**
-
-Tôi phân vân giữa việc sử dụng:
-- JSON Config => linh hoạt đưa sang site khác vẫn thao tác dễ
-- PHP code => hiệu năng
-
-Sau khi nghiên cứu đọc qua phân tích của ChatGPT/Grok/Claud thì tôi thấy giải pháp dùng JSON + Cache `get_transient` là ok và chọn cách này luôn.
-
-Lý do:
-- Đây là CPT, ACF và Taxonomy riêng nên ít thay đổi => Cache lại ổn áp, tăng hiệu năng
-- Linh hoạt, đưa sang site khác triển khai nhanh chóng
-
 ### Không biết các Search REST API
 
 ### Vấn đề kế thừa và Interface - làm sao để Class con bắt buộc phải khai báo các thứ mình cần
@@ -122,21 +48,6 @@ Kết quả khi các Chat Bot gợi ý thì quá là ngộp vì:
 - Tại sao phải có các Method thừa và phải Validate nhiều đến thế cho 1 hệ thống nhỏ
 
 Rồi tôi code từ từ, xây dựng tầng Infrastructure trước sau đó xây Repository ban đầu tôi chia nó làm 2 tầng, code lên Repository suy nghĩ thiếu cái gì xuống thêm method vào Infrastructure
-
-
-### Không biết sử dụng Redis Cache
-
-Ban đầu tôi cũng phân vân về vấn đề hiệu năng, muốn sử dụng Redis Cache nhưng sợ cài khó khăn, rồi làm ở Local thì không hiểu Server, nhưng khi cài thử nó đơn giản:
-
-**Learned**
-
-- Chỉ cần cài bằng Terminal Ubuntu, không cần cấu hình phức tạp
-- Cài thêm Plugin trong Wordpress để quản lý dễ hơn đối với Beginner
-- Có thể dùng Command Line để kiểm tra
-- Không cần phải khởi động thủ công
-- Không cần Refactor lại Infrastructure/Cache và transient API đã lo luôn
-- Nó giúp cái thiện hiệu năng đáng kể không riêng gì những Cache Object mình kiểm soát, các API WP cũng được Cache luôn
-- Hiểu được sự khác biệt giữa Cache Object và Cache Page
 
 ### Ở mỗi chức năng mới đều không biết sẽ đưa nó vào tầng nào
 

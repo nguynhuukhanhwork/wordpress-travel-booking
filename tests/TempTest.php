@@ -1,7 +1,9 @@
 <?php
 
+use TravelBooking\Domain\Enum\CustomerSource;
 
-
-$data = \TravelBooking\Domain\ValueObject\MoneyVO::vnd(120980555);
-
-print_r($data->format());
+add_action('init', function () {
+    $customerSource = 'faceboo';
+    $source = $customerSource instanceof CustomerSource ? $customerSource : (CustomerSource::tryFrom($customerSource) ?? CustomerSource::WALK_IN);
+    print_r($source);
+});

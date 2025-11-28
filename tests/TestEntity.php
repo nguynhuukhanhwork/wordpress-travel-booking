@@ -4,7 +4,7 @@
 //{
 //    $term = new \TravelBooking\Infrastructure\WordPress\Taxonomy\TermReader();
 //
-//    $tour = \TravelBooking\Domain\Entity\Tour::reconstruct(
+//    $tour = \TravelBooking\Domain\Model\Tour\Tour::reconstruct(
 //        id: 999,
 //        name: 'Hà Nội - Đà Nẵng - Phú Quốc 5N4Đ Bay Vietnam Airlines',
 //        tourCode: 'HN-DN-PQ-0525',
@@ -19,7 +19,7 @@
 //        featuredImage: 'https://example.com/featured-hanoi-danang.jpg',
 //        createdAt: new \DateTimeImmutable('2025-04-01 08:00:00'),
 //        updatedAt: new \DateTimeImmutable('2025-11-20 14:30:00'),
-//        status: \TravelBooking\Config\Enum\TourStatus::OPEN,
+//        status: \TravelBooking\Domain\Enum\TourStatus::OPEN,
 //    );
 //
 //    $data = $tour->typeLabel($term);
