@@ -42,7 +42,7 @@ final class BookingTable extends BaseTable
         $id_name = self::ID_COLUMN_NAME();
         $charset_collate = $this->getCharsetCollate();
         return "
-        CREATE TABLE IF NOT EXISTS {$table} (
+        CREATE TABLE IF .................... {$table} (
             booking_id        BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             
             booking_code      CHAR(36) NOT NULL UNIQUE DEFAULT (UUID()) COMMENT 'UUID v4',

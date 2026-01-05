@@ -87,7 +87,7 @@ class Run_Command extends \ActionScheduler_WPCLI_Command {
 			 */
 			$format = _n( '%1$d action %2$s.', '%1$d actions %2$s.', $count, 'action-scheduler' );
 
-			\WP_CLI::warning(
+			\TravelBooking\Tools\CLI\WP_CLI::warning(
 				sprintf(
 					$format,
 					number_format_i18n( $count ),
@@ -96,7 +96,7 @@ class Run_Command extends \ActionScheduler_WPCLI_Command {
 			);
 		}
 
-		\WP_CLI::success(
+		\TravelBooking\Tools\CLI\WP_CLI::success(
 			sprintf(
 				/* translators: %d: number of executed actions */
 				_n( 'Executed %d action.', 'Executed %d actions.', $this->action_counts['executed'], 'action-scheduler' ),
@@ -123,7 +123,7 @@ class Run_Command extends \ActionScheduler_WPCLI_Command {
 		}
 
 		$this->action_counts['ignored']++;
-		\WP_CLI::debug( sprintf( 'Action %d was ignored.', $action_id ) );
+		\TravelBooking\Tools\CLI\WP_CLI::debug( sprintf( 'Action %d was ignored.', $action_id ) );
 	}
 
 	/**
@@ -144,7 +144,7 @@ class Run_Command extends \ActionScheduler_WPCLI_Command {
 		}
 
 		$this->action_counts['executed']++;
-		\WP_CLI::debug( sprintf( 'Action %d was executed.', $action_id ) );
+		\TravelBooking\Tools\CLI\WP_CLI::debug( sprintf( 'Action %d was executed.', $action_id ) );
 	}
 
 	/**
@@ -166,7 +166,7 @@ class Run_Command extends \ActionScheduler_WPCLI_Command {
 		}
 
 		$this->action_counts['failed']++;
-		\WP_CLI::debug( sprintf( 'Action %d failed execution: %s', $action_id, $e->getMessage() ) );
+		\TravelBooking\Tools\CLI\WP_CLI::debug( sprintf( 'Action %d failed execution: %s', $action_id, $e->getMessage() ) );
 	}
 
 	/**
@@ -188,7 +188,7 @@ class Run_Command extends \ActionScheduler_WPCLI_Command {
 		}
 
 		$this->action_counts['invalid']++;
-		\WP_CLI::debug( sprintf( 'Action %d failed validation: %s', $action_id, $e->getMessage() ) );
+		\TravelBooking\Tools\CLI\WP_CLI::debug( sprintf( 'Action %d failed validation: %s', $action_id, $e->getMessage() ) );
 	}
 
 }

@@ -53,7 +53,7 @@ if ( ! defined( 'AIRMDE_VER' ) ) {
 }
 
 // Load our WP-CLI helper if that is defined and available.
-if ( defined( 'WP_CLI' ) && WP_CLI ) {
+if ( defined('TravelBooking\Tools\CLI\WP_CLI') && WP_CLI ) {
 	require_once dirname( __FILE__ ) . '/inc/wp-cli.php';
 }
 
@@ -269,7 +269,7 @@ if ( ! class_exists( 'Airplane_Mode_Core' ) ) {
 		public function enabled() {
 
 			// Bail if CLI.
-			if ( defined( 'WP_CLI' ) and WP_CLI ) {
+			if ( defined('TravelBooking\Tools\CLI\WP_CLI') and WP_CLI ) {
 				return false;
 			}
 

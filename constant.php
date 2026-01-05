@@ -34,7 +34,20 @@ define('TB_PRESENTATION_LAYER_PATH', TB_CORE_PATH . 'inc/Presentation/');
 define('TB_PRESENTATION_LAYER_URL', TB_CORE_URL . 'inc/Presentation/');
 
 
+/**
+ * Define '' for all Const
+ */
+$const_apis = [
+    'TB_TELEGRAM_TOKEN',
+    'TB_TELEGRAM_',
+    ''
+];
 
+foreach ($const_apis as $api) {
+    if (!defined($api)) {
+        define($api, '');
+    }
+}
 
 
 

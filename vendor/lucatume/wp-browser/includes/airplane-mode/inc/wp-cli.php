@@ -1,5 +1,7 @@
 <?php
 
+use TravelBooking\Tools\CLI\WP_CLI;
+
 class Airplane_Mode_Command extends WP_CLI_Command {
 
 	/**

@@ -39,11 +39,11 @@ abstract class BaseTable
         return $this->wpdb->get_charset_collate();
     }
 
-    public function createTable(): void
+    public function createTable(): array
     {
         require_once ABSPATH.'wp-admin/includes/upgrade.php';
         $schema = $this->getSchema();
-        dbDelta($schema);
+        return dbDelta($schema);
     }
 
     public function getAll(int $limit = 30): array

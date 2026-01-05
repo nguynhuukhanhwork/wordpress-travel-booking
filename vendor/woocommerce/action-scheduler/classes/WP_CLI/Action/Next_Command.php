@@ -4,7 +4,7 @@ namespace Action_Scheduler\WP_CLI\Action;
 
 // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaping output is not necessary in WP CLI.
 
-use function \WP_CLI\Utils\get_flag_value;
+use function WP_CLI\Utils\get_flag_value;
 
 /**
  * WP-CLI command: action-scheduler action next
@@ -27,7 +27,7 @@ class Next_Command extends \ActionScheduler_WPCLI_Command {
 		}
 
 		if ( $raw ) {
-			\WP_CLI::line( as_next_scheduled_action( $hook, $callback_args, $group ) );
+			\TravelBooking\Tools\CLI\WP_CLI::line( as_next_scheduled_action( $hook, $callback_args, $group ) );
 			return;
 		}
 
@@ -44,7 +44,7 @@ class Next_Command extends \ActionScheduler_WPCLI_Command {
 
 		$params['status'] = \ActionScheduler_Store::STATUS_RUNNING;
 		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export
-		\WP_CLI::debug( 'ActionScheduler()::store()->query_action( ' . var_export( $params, true ) . ' )' );
+		\TravelBooking\Tools\CLI\WP_CLI::debug( 'ActionScheduler()::store()->query_action( ' . var_export( $params, true ) . ' )' );
 
 		$store     = \ActionScheduler::store();
 		$action_id = $store->query_action( $params );
@@ -56,7 +56,7 @@ class Next_Command extends \ActionScheduler_WPCLI_Command {
 
 		$params['status'] = \ActionScheduler_Store::STATUS_PENDING;
 		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export
-		\WP_CLI::debug( 'ActionScheduler()::store()->query_action( ' . var_export( $params, true ) . ' )' );
+		\TravelBooking\Tools\CLI\WP_CLI::debug( 'ActionScheduler()::store()->query_action( ' . var_export( $params, true ) . ' )' );
 
 		$action_id = $store->query_action( $params );
 
@@ -65,7 +65,7 @@ class Next_Command extends \ActionScheduler_WPCLI_Command {
 			return;
 		}
 
-		\WP_CLI::warning( 'No matching next action.' );
+		\TravelBooking\Tools\CLI\WP_CLI::warning( 'No matching next action.' );
 	}
 
 }

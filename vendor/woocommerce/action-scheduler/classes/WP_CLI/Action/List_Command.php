@@ -73,7 +73,7 @@ class List_Command extends \ActionScheduler_WPCLI_Command {
 			$params = 'array()';
 		}
 
-		\WP_CLI::debug(
+		\TravelBooking\Tools\CLI\WP_CLI::debug(
 			sprintf(
 				'as_get_scheduled_actions( %s, %s )',
 				$params,

@@ -62,7 +62,7 @@ class Delete_Command extends \ActionScheduler_WPCLI_Command {
 				$store->delete_action( $action_id );
 			} catch ( \Exception $e ) {
 				$this->action_counts['failed']++;
-				\WP_CLI::warning( $e->getMessage() );
+				\TravelBooking\Tools\CLI\WP_CLI::warning( $e->getMessage() );
 			}
 
 			$progress_bar->tick();
@@ -75,7 +75,7 @@ class Delete_Command extends \ActionScheduler_WPCLI_Command {
 		/* translators: %2$d: number of actions deletions failed */
 		$format .= _n( '%2$d failure.', '%2$d failures.', $this->action_counts['failed'], 'action-scheduler' );
 
-		\WP_CLI::success(
+		\TravelBooking\Tools\CLI\WP_CLI::success(
 			sprintf(
 				$format,
 				number_format_i18n( $this->action_counts['deleted'] ),
@@ -102,7 +102,7 @@ class Delete_Command extends \ActionScheduler_WPCLI_Command {
 		}
 
 		$this->action_counts['deleted']++;
-		\WP_CLI::debug( sprintf( 'Action %d was deleted.', $action_id ) );
+		\TravelBooking\Tools\CLI\WP_CLI::debug( sprintf( 'Action %d was deleted.', $action_id ) );
 	}
 
 }

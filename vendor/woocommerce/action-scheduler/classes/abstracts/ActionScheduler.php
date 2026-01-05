@@ -1,7 +1,8 @@
 <?php
 
-use Action_Scheduler\WP_CLI\Migration_Command;
 use Action_Scheduler\Migration\Controller;
+use Action_Scheduler\WP_CLI\Migration_Command;
+use TravelBooking\Tools\CLI\WP_CLI;
 
 /**
  * Class ActionScheduler
@@ -137,7 +138,7 @@ abstract class ActionScheduler {
 
 			switch ( $type ) {
 				case 'WPCLI':
-					$dir = $classes_dir . 'WP_CLI' . $d;
+					$dir = $classes_dir . 'TravelBooking\Tools\CLI\WP_CLI' . $d;
 					break;
 				case 'DBLogger':
 				case 'DBStore':
@@ -151,7 +152,7 @@ abstract class ActionScheduler {
 					break;
 			}
 		} elseif ( self::is_class_cli( $class ) ) {
-			$dir = $classes_dir . 'WP_CLI' . $d;
+			$dir = $classes_dir . 'TravelBooking\Tools\CLI\WP_CLI' . $d;
 		} elseif ( strpos( $class, 'CronExpression' ) === 0 ) {
 			$dir = self::plugin_path( 'lib' . $d . 'cron-expression' . $d );
 		} elseif ( strpos( $class, 'WP_Async_Request' ) === 0 ) {
@@ -240,7 +241,7 @@ abstract class ActionScheduler {
 			require_once self::plugin_path( 'deprecated/functions.php' );
 		}
 
-		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		if ( defined('TravelBooking\Tools\CLI\WP_CLI') && WP_CLI ) {
 			WP_CLI::add_command( 'action-scheduler', 'ActionScheduler_WPCLI_Scheduler_command' );
 			WP_CLI::add_command( 'action-scheduler', 'ActionScheduler_WPCLI_Clean_Command' );
 			WP_CLI::add_command( 'action-scheduler action', '\Action_Scheduler\WP_CLI\Action_Command' );

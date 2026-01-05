@@ -3,11 +3,10 @@
 
 namespace Action_Scheduler\WP_CLI;
 
-use Action_Scheduler\Migration\Config;
+use Action_Scheduler\Migration\Controller;
 use Action_Scheduler\Migration\Runner;
 use Action_Scheduler\Migration\Scheduler;
-use Action_Scheduler\Migration\Controller;
-use WP_CLI;
+use TravelBooking\Tools\CLI\WP_CLI;
 use WP_CLI_Command;
 
 /**
@@ -32,7 +31,7 @@ class Migration_Command extends WP_CLI_Command {
 	 * Register the command with WP-CLI
 	 */
 	public function register() {
-		if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
+		if ( ! defined('TravelBooking\Tools\CLI\WP_CLI') || ! WP_CLI ) {
 			return;
 		}
 

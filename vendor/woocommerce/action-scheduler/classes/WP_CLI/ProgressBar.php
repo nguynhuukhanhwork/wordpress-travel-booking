@@ -62,7 +62,7 @@ class ProgressBar {
 	 * @throws \Exception When this is not run within WP CLI.
 	 */
 	public function __construct( $message, $count, $interval = 100 ) {
-		if ( ! ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+		if ( ! ( defined('TravelBooking\Tools\CLI\WP_CLI') && WP_CLI ) ) {
 			/* translators: %s php class name */
 			throw new \Exception( sprintf( __( 'The %s class can only be run within WP CLI.', 'action-scheduler' ), __CLASS__ ) );
 		}

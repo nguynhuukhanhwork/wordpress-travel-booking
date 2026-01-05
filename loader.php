@@ -9,6 +9,8 @@ use \TravelBooking\Infrastructure\WordPress\Registry\CPTRegistry;
 use \TravelBooking\Infrastructure\WordPress\Registry\ACFRegistry;
 use \TravelBooking\Infrastructure\WordPress\Registry\TaxonomyRegistry;
 use \TravelBooking\Infrastructure\Integrations\CF7\RegistrarTagOptions;
+use TravelBooking\Tools\CLI\CLI_Bootstrap;
+
 /** Autoload File */
 require_once __DIR__.'/vendor/autoload.php';
 /** Load Const */
@@ -56,5 +58,8 @@ RegistrarTagOptions::getInstance();
 \TravelBooking\Presentation\Shortcodes\AdvancedSearchTourRestShortcode::getInstance();
 new \TravelBooking\Presentation\Shortcodes\TourSearch();
 
-require_once __DIR__."/tools/reinstall-database.php";
+add_action('cli_init', function () {
+    \TravelBooking\Tools\CLI\CLI_Bootstrap::init();
+});
+
 require_once __DIR__."/testing.php";

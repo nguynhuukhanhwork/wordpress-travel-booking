@@ -89,7 +89,7 @@ class Runner {
 			$this->action_migrator = new ActionMigrator( $this->source_store, $this->destination_store, $this->log_migrator );
 		}
 
-		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		if ( defined('TravelBooking\Tools\CLI\WP_CLI') && WP_CLI ) {
 			$this->progress_bar = $config->get_progress_bar();
 		}
 	}

@@ -5,8 +5,8 @@ namespace Action_Scheduler\WP_CLI;
 // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaping output is not necessary in WP CLI.
 
 use ActionScheduler_SystemInformation;
-use WP_CLI;
-use function \WP_CLI\Utils\get_flag_value;
+use TravelBooking\Tools\CLI\WP_CLI;
+use function WP_CLI\Utils\get_flag_value;
 
 /**
  * System info WP-CLI commands for Action Scheduler.
@@ -66,9 +66,9 @@ class System_Command {
 		 */
 		$runner_enabled = has_action( 'action_scheduler_run_queue', array( \ActionScheduler::runner(), 'run' ) );
 
-		\WP_CLI::line( sprintf( 'Data store: %s', $this->get_current_datastore() ) );
-		\WP_CLI::line( sprintf( 'Runner: %s%s', $this->get_current_runner(), ( $runner_enabled ? '' : ' (disabled)' ) ) );
-		\WP_CLI::line( sprintf( 'Version: %s', $this->get_latest_version() ) );
+		\TravelBooking\Tools\CLI\WP_CLI::line( sprintf( 'Data store: %s', $this->get_current_datastore() ) );
+		\TravelBooking\Tools\CLI\WP_CLI::line( sprintf( 'Runner: %s%s', $this->get_current_runner(), ( $runner_enabled ? '' : ' (disabled)' ) ) );
+		\TravelBooking\Tools\CLI\WP_CLI::line( sprintf( 'Version: %s', $this->get_latest_version() ) );
 
 		$rows              = array();
 		$action_counts     = $this->store->action_counts();
@@ -105,7 +105,7 @@ class System_Command {
 
 		if ( ! $all ) {
 			echo $latest;
-			\WP_CLI::halt( 0 );
+			\TravelBooking\Tools\CLI\WP_CLI::halt( 0 );
 		}
 
 		$instance = \ActionScheduler_Versions::instance();
@@ -158,7 +158,7 @@ class System_Command {
 
 		if ( ! $all ) {
 			echo $path;
-			\WP_CLI::halt( 0 );
+			\TravelBooking\Tools\CLI\WP_CLI::halt( 0 );
 		}
 
 		$sources = ActionScheduler_SystemInformation::get_sources();
@@ -187,7 +187,7 @@ class System_Command {
 
 		ksort( $rows );
 
-		\WP_CLI::log( PHP_EOL . 'Please note there can only be one unique registered instance of Action Scheduler per ' . PHP_EOL . 'version number, so this list may not include all the currently present copies of ' . PHP_EOL . 'Action Scheduler.' . PHP_EOL );
+		\TravelBooking\Tools\CLI\WP_CLI::log( PHP_EOL . 'Please note there can only be one unique registered instance of Action Scheduler per ' . PHP_EOL . 'version number, so this list may not include all the currently present copies of ' . PHP_EOL . 'Action Scheduler.' . PHP_EOL );
 
 		$formatter = new \WP_CLI\Formatter( $assoc_args, array( 'source', 'version', 'active' ) );
 		$formatter->display_items( $rows );

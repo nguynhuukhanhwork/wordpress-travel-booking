@@ -1,5 +1,7 @@
 <?php
 
+use TravelBooking\Tools\CLI\WP_CLI;
+
 /**
  * Commands for Action Scheduler.
  */

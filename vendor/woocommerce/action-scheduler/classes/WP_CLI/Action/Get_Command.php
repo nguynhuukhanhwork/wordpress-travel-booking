@@ -20,7 +20,7 @@ class Get_Command extends \ActionScheduler_WPCLI_Command {
 
 		if ( is_a( $action, ActionScheduler_NullAction::class ) ) {
 			/* translators: %d is action ID. */
-			\WP_CLI::error( sprintf( esc_html__( 'Unable to retrieve action %d.', 'action-scheduler' ), $action_id ) );
+			\TravelBooking\Tools\CLI\WP_CLI::error( sprintf( esc_html__( 'Unable to retrieve action %d.', 'action-scheduler' ), $action_id ) );
 		}
 
 		$only_logs   = ! empty( $this->assoc_args['field'] ) && 'log_entries' === $this->assoc_args['field'];
@@ -48,7 +48,7 @@ class Get_Command extends \ActionScheduler_WPCLI_Command {
 		try {
 			$status = $store->get_status( $action_id );
 		} catch ( \Exception $e ) {
-			\WP_CLI::error( $e->getMessage() );
+			\TravelBooking\Tools\CLI\WP_CLI::error( $e->getMessage() );
 		}
 
 		$action_arr = array(

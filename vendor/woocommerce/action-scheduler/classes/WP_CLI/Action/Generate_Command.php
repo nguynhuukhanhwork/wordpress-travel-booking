@@ -2,7 +2,7 @@
 
 namespace Action_Scheduler\WP_CLI\Action;
 
-use function \WP_CLI\Utils\get_flag_value;
+use function WP_CLI\Utils\get_flag_value;
 
 /**
  * WP-CLI command: action-scheduler action generate
@@ -91,7 +91,7 @@ class Generate_Command extends \ActionScheduler_WPCLI_Command {
 	 * @return void
 	 */
 	protected function print_success( $actions_added, $action_type ) {
-		\WP_CLI::success(
+		\TravelBooking\Tools\CLI\WP_CLI::success(
 			sprintf(
 				/* translators: %1$d refers to the total number of tasks added, %2$s is the action type */
 				_n( '%1$d %2$s action scheduled.', '%1$d %2$s actions scheduled.', $actions_added, 'action-scheduler' ),
@@ -109,7 +109,7 @@ class Generate_Command extends \ActionScheduler_WPCLI_Command {
 	 * @return void
 	 */
 	protected function print_error( \Exception $e ) {
-		\WP_CLI::error(
+		\TravelBooking\Tools\CLI\WP_CLI::error(
 			sprintf(
 				/* translators: %s refers to the exception error message. */
 				__( 'There was an error creating the scheduled action: %s', 'action-scheduler' ),

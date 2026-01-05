@@ -2,7 +2,7 @@
 
 namespace Action_Scheduler\WP_CLI\Action;
 
-use function \WP_CLI\Utils\get_flag_value;
+use function WP_CLI\Utils\get_flag_value;
 
 /**
  * WP-CLI command: action-scheduler action create
@@ -48,7 +48,7 @@ class Create_Command extends \ActionScheduler_WPCLI_Command {
 				$function_args['start'] = $schedule_start->format( 'U' );
 			}
 		} catch ( \Exception $e ) {
-			\WP_CLI::error( $e->getMessage() );
+			\TravelBooking\Tools\CLI\WP_CLI::error( $e->getMessage() );
 		}
 
 		// Default to creating single action.
@@ -123,7 +123,7 @@ class Create_Command extends \ActionScheduler_WPCLI_Command {
 	 * @return void
 	 */
 	protected function print_success( $action_id, $action_type ) {
-		\WP_CLI::success(
+		\TravelBooking\Tools\CLI\WP_CLI::success(
 			sprintf(
 				/* translators: %1$s: type of action, %2$d: ID of the created action */
 				__( '%1$s action (%2$d) scheduled.', 'action-scheduler' ),
@@ -141,7 +141,7 @@ class Create_Command extends \ActionScheduler_WPCLI_Command {
 	 * @return void
 	 */
 	protected function print_error( \Exception $e ) {
-		\WP_CLI::error(
+		\TravelBooking\Tools\CLI\WP_CLI::error(
 			sprintf(
 				/* translators: %s refers to the exception error message. */
 				__( 'There was an error creating the scheduled action: %s', 'action-scheduler' ),

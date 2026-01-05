@@ -1,6 +1,7 @@
 <?php
 
 use Action_Scheduler\WP_CLI\ProgressBar;
+use TravelBooking\Tools\CLI\WP_CLI;
 
 /**
  * WP CLI Queue runner.
@@ -40,7 +41,7 @@ class ActionScheduler_WPCLI_QueueRunner extends ActionScheduler_Abstract_QueueRu
 	 * @throws Exception When this is not run within WP CLI.
 	 */
 	public function __construct( ?ActionScheduler_Store $store = null, ?ActionScheduler_FatalErrorMonitor $monitor = null, ?ActionScheduler_QueueCleaner $cleaner = null ) {
-		if ( ! ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+		if ( ! ( defined('TravelBooking\Tools\CLI\WP_CLI') && WP_CLI ) ) {
 			/* translators: %s php class name */
 			throw new Exception( sprintf( __( 'The %s class can only be run within WP CLI.', 'action-scheduler' ), __CLASS__ ) );
 		}

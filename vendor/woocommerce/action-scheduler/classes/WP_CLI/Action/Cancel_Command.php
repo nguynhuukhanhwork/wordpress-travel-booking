@@ -2,7 +2,7 @@
 
 namespace Action_Scheduler\WP_CLI\Action;
 
-use function \WP_CLI\Utils\get_flag_value;
+use function WP_CLI\Utils\get_flag_value;
 
 /**
  * WP-CLI command: action-scheduler action cancel
@@ -46,7 +46,7 @@ class Cancel_Command extends \ActionScheduler_WPCLI_Command {
 	 */
 	protected function cancel_single( $hook, $callback_args, $group ) {
 		if ( empty( $hook ) ) {
-			\WP_CLI::error( __( 'Please specify hook of action to cancel.', 'action-scheduler' ) );
+			\TravelBooking\Tools\CLI\WP_CLI::error( __( 'Please specify hook of action to cancel.', 'action-scheduler' ) );
 		}
 
 		try {
@@ -73,7 +73,7 @@ class Cancel_Command extends \ActionScheduler_WPCLI_Command {
 	 */
 	protected function cancel_all( $hook, $callback_args, $group ) {
 		if ( empty( $hook ) && empty( $group ) ) {
-			\WP_CLI::error( __( 'Please specify hook and/or group of actions to cancel.', 'action-scheduler' ) );
+			\TravelBooking\Tools\CLI\WP_CLI::error( __( 'Please specify hook and/or group of actions to cancel.', 'action-scheduler' ) );
 		}
 
 		try {
@@ -86,7 +86,7 @@ class Cancel_Command extends \ActionScheduler_WPCLI_Command {
 		 * Because as_unschedule_all_actions() does not provide a result,
 		 * neither confirm or deny actions cancelled.
 		 */
-		\WP_CLI::success( __( 'Request to cancel scheduled actions completed.', 'action-scheduler' ) );
+		\TravelBooking\Tools\CLI\WP_CLI::success( __( 'Request to cancel scheduled actions completed.', 'action-scheduler' ) );
 	}
 
 	/**
@@ -95,7 +95,7 @@ class Cancel_Command extends \ActionScheduler_WPCLI_Command {
 	 * @return void
 	 */
 	protected function print_success() {
-		\WP_CLI::success( __( 'Scheduled action cancelled.', 'action-scheduler' ) );
+		\TravelBooking\Tools\CLI\WP_CLI::success( __( 'Scheduled action cancelled.', 'action-scheduler' ) );
 	}
 
 	/**
@@ -107,7 +107,7 @@ class Cancel_Command extends \ActionScheduler_WPCLI_Command {
 	 * @return void
 	 */
 	protected function print_error( \Exception $e, $multiple ) {
-		\WP_CLI::error(
+		\TravelBooking\Tools\CLI\WP_CLI::error(
 			sprintf(
 				/* translators: %1$s: singular or plural %2$s: refers to the exception error message. */
 				__( 'There was an error cancelling the %1$s: %2$s', 'action-scheduler' ),
