@@ -1,5 +1,9 @@
 # TourBooking Pro – Hệ thống đặt tour tự động
 
+## Warning
+
+Đây là project đang phát triển (chưa hoàn thành), phục vụ cho việc học tập.
+
 ## Mục tiêu
 Xây dựng hệ thống đặt tour hoàn chỉnh: **tìm kiếm, đặt tour, lưu DB, gửi Telegram, quản trị**.
 
