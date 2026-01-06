@@ -11,6 +11,16 @@ Xây dựng hệ thống đặt tour hoàn chỉnh: **tìm kiếm, đặt tour, 
 - Telegram Bot Notification
 - Unit Test + Documentation
 
+## Vai trò của các Folder
+- inc/Application:
+- inc/Config: Quản lý tập trung các file cấu hình gồm:
+  - ENUM tên của các cột trong bảng
+  - File JSON chứa các cấu hình liên quan đến Core WP: CPT, ACF, Taxonomies
+- inc/Domain: Chứa các Model (đối tượng nghiệp vụ) của hệ thống, đây là nơi thuần OOP để bảo vệ sự thay đổi công nghệ
+- inc/Infrastructure: Chứa hạ tầng liên phục vụ cho hệ thống: notification, log, cache, database
+- inc/Presentation: Chứa các Shortcode, CSS, JS phục vụ cho việc hiển thị lên trình duyệt
+- inc/Tool: Các tool hổ trợ làm việc như WP-CLI
+
 ## Demo
 - Frontend: `[tour_search]` shortcode
 - API: `/wp-json/travel-booking/v1/search-tours`
